@@ -15,7 +15,7 @@ gs_output = {'tests': []}
 def output_postlecture_question_grade(grades, gs_output):
 	gs_output['tests'].append({
 		'name': 'Post-Lecture Questions', 
-		'score': float(grades.loc['Post-Lec Qs']) # should just pull the data we want
+		'score': float(grades.loc['Post-Lec Qs'])
 		'max_score': 15
 		'output': f"All students are automatically given all Post-Lecture Question points."
 		})
