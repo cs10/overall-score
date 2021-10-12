@@ -6,8 +6,8 @@ import requests
 import getpass
 
 BASE_URL = 'https://www.gradescope.com'
-COURSE_ID = 292247 # CHANGE THIS E
-ASSIGNMENT_ID = 292247 # CHANGE THIS
+COURSE_ID = 292247 # CHANGE THIS 
+ASSIGNMENT_ID = 1573263 # CHANGE THIS
 
 class APIClient:
     def __init__(self):
