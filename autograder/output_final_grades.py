@@ -7,8 +7,7 @@ import json
 
 metadata = json.load(open('/autograder/submission_metadata.json', 'r'))
 sid = int(metadata['users'][0]['sid'])
-grades = pd.read_csv('autograder/grades.csv', index_col=1).loc[sid] 
-
+grades = pd.read_csv('/autograder/grades.csv', index_col=1).loc[sid]
 
 gs_output = {'tests': []}
 
@@ -44,9 +43,9 @@ def output_lab_grades(grades, gs_output):
 	# dropped labs
 	gs_output['tests'].append({
 		'name': 'Labs',
-		'score': float((grades.loc['Lab Actual'] + 1) * 2), # to account for no lab1 checkoff
+		'score': float((grades.loc['Labs'] + 1) * 2), # to account for no lab1 checkoff
 		'max_score': 40,
-		'output': f"You have submitted {int(1 + grades.loc['Lab Actual'])} lab(s)." # to account for  no lab1 checkoff
+		'output': f"You have submitted {int(1 + grades.loc['Labs'])} lab(s)." # to account for  no lab1 checkoff
 	})
 
 
@@ -55,14 +54,14 @@ def output_overall_score(grades, gs_output):
 		'name': 'Overall Score',
 		'score': 0,
 		'max_score': 0,
-		'output': f"Your overall score is {grades.loc['Overall']}."
+		'output': f"Your overall score is {grades.loc['Overall Score']}."
 		})
 
 
 output_overall_score(grades, gs_output)
 output_postlecture_question_grade(grades, gs_output)
+output_lab_grades(grades, gs_output)
 
-#copied directly, idk what's happening here
 out_path = '/autograder/results/results.json'
 with open(out_path, 'w') as f:
     f.write(json.dumps(gs_output))
