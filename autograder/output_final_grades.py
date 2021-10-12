@@ -20,10 +20,7 @@ def output_postlecture_question_score(grades, gs_output):
 		})
 	
 def output_project_scores(grades, gs_output):
-	project_outputs = [f"Your Project 1 score without lateness deductions is {grades.loc['P1 Actual']}.",
-					   f"Project 1 used {grades.loc['P1 Slip Days']} slip day(s) and was {grades.loc['P1 Days Late']} day(s) late.",
-					   f"Your Project 2 score without lateness deductions is {grades.loc['P2 Actual']}."],
-					   f"Project 2 used {grades.loc['P2 Slip Days']} slip day(s) and was {grades.loc['P2 Days Late']} day(s) late."]
+	project_outputs = [f"Your Project 1 score without lateness deductions is {grades.loc['P1 Actual']}.", f"Project 1 used {grades.loc['P1 Slip Days']} slip day(s) and was {grades.loc['P1 Days Late']} day(s) late.", f"Your Project 2 score without lateness deductions is {grades.loc['P2 Actual']}."], f"Project 2 used {grades.loc['P2 Slip Days']} slip day(s) and was {grades.loc['P2 Days Late']} day(s) late."]
 	gs_output['tests'].append({
         'name': 'Projects',
         'score': float(grades.loc['P1 Actual'] + grades.loc['P2 Actual']), #add more as more projects are finished
