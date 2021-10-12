@@ -19,6 +19,16 @@ def output_postlecture_question_grade(grades, gs_output):
 		'max_score': 15,
 		'output': f"All students are automatically given all Post-Lecture Question points."
 		})
+	
+# def output_project_grades(grades, gs_output):
+	
+def output_lab_grades(grades, gs_output):
+	gs_output['tests'].append({
+		'name': 'Labs',
+		'score': float((grades.loc['Lab Actual'] + 1) * 2), # to account for no lab1 checkoff
+		'max_score': 40,
+		'output': f"You have submitted {int(1 + grades.loc['Lab Actual'])} lab(s)." # to account for  no lab1 checkoff
+	})
 
 
 def output_overall_score(grades, gs_output):
