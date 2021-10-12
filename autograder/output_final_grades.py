@@ -7,7 +7,7 @@ import json
 
 metadata = json.load(open('/autograder/submission_metadata.json', 'r'))
 sid = int(metadata['users'][0]['sid'])
-grades = pd.read_csv('autograder/src/grades.csv', index_col=2).loc[sid] 
+grades = pd.read_csv('autograder/source/grades.csv', index_col=2).loc[sid] 
 
 
 gs_output = {'tests': []}
@@ -21,8 +21,27 @@ def output_postlecture_question_grade(grades, gs_output):
 		})
 	
 # def output_project_grades(grades, gs_output):
+# 	project_outputs = [f"Your Project 1 score is {grades.loc['P1 Actual']}.",
+# 					   f"Your Project 2 score is {grades.loc['Project 2']}.", 
+# 					   f"Your Project 2 score is {grades.loc['Project 2']}."]
+	
+# 	    project_outputs = [f"Your Project 1 score is {grades.loc['Project 1']}.",                        
+# 		f"Your Project 2 score is {grades.loc['Project 2']}.",                        
+# 		f"Your overall project score is {np.mean([grades.loc['Project 1'], grades.loc['Project 2']])}."]
+
+# def output_survey_grades(grades, gs_output):
+# 	# dropped surveys
+# 	gs_output['tests'].append({
+# 		'name': 'Weekly Surveys', 
+# 		'score': float(grades.loc['Surveys Actual']),
+# 		'max_score': 10,
+# 		'output': f"You have submitted {int(grades.loc['Surveys Actual'])} survey(s)."
+# 		})
+		
 	
 def output_lab_grades(grades, gs_output):
+	# potentially do per-lab outputs if time
+	# dropped labs
 	gs_output['tests'].append({
 		'name': 'Labs',
 		'score': float((grades.loc['Lab Actual'] + 1) * 2), # to account for no lab1 checkoff
