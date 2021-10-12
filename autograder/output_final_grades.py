@@ -7,7 +7,7 @@ import json
 
 metadata = json.load(open('/autograder/submission_metadata.json', 'r'))
 sid = int(metadata['users'][0]['sid'])
-grades = pd.read_csv('autograder/source/grades.csv', index_col=2).loc[sid] 
+grades = pd.read_csv('autograder/grades.csv', index_col=1).loc[sid] 
 
 
 gs_output = {'tests': []}
