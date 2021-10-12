@@ -26,15 +26,15 @@ def output_project_scores(grades, gs_output):
 					   f"Project 2 used {grades.loc['P2 Slip Days']} slip day(s) and was {grades.loc['P2 Days Late']} day(s) late."]
 	gs_output['tests'].append({
         'name': 'Projects',
-        'score': float(grades.loc['P1 Actual'] + grades.loc['P2 Actual']),
+        'score': float(grades.loc['P1 Actual'] + grades.loc['P2 Actual']), #add more as more projects are finished
         'max_score': 225, 
-        'output': '\n'.join(project _outputs)
+        'output': '\n'.join(project_outputs)
     })
 	
 def output_survey_scores(grades, gs_output):
 	gs_output['tests'].append({
 		'name': 'Weekly Surveys', 
-		'score': float(grades.loc['Surveys Actual']),
+		'score': float(grades.loc['Weekly Surveys']),
 		'max_score': 10,
 		'output': f"You have submitted {int(grades.loc['Weekly Surveys'])} survey(s)."
 		})
